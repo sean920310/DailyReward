@@ -1,0 +1,94 @@
+h1 {
+    text-align: center;
+    font-size: 30px;
+    height: 40px;
+    font-weight: bold;
+}
+
+body {
+    background: none !important;
+}
+
+#container {
+    font-size: 20px;
+    padding: 25px;
+    color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(44, 44, 44);
+    height: 650px;
+    width: 1000px;
+    border: 2px solid aliceblue;
+    border-radius: 7px;
+}
+
+button {
+    background-color: white;
+    padding: 10px;
+    /*+border-radius: 6px;*/
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    border-radius: 6px;
+    text-align: center;
+    width: 80px;
+    margin: 5px;
+}
+
+html body div#container div#allDays table {
+    margin: auto;
+}
+
+.day {
+    border: 2px solid #BBBBBB;
+    /*+border-radius: 10px;*/
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 2px 10px;
+    padding: 0px 5px;
+}
+
+.dayCount {
+    font-family: consolas;
+    color: black;
+    border: 2px solid #FFFFFF;
+    /*+border-radius: 11px;*/
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+    -khtml-border-radius: 11px;
+    border-radius: 11px;
+    background-color: aqua;
+    margin: 9px 0;
+}
+
+#allDays {
+    overflow: auto;
+    height: 500px;
+}
+
+.rewardImg {
+    height: 80px;
+    width: 80px;
+    border: 2px solid gray;
+    /*+border-radius: 10px;*/
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.count {
+    color: #FFFFFF;
+}
+
+#resign {
+    /*+placement: 800px 20px;*/
+    position: relative;
+    left: 800px;
+    top: 20px;
+}
