@@ -61,22 +61,26 @@ AddEventHandler("DailyReward:getReward",function(day)
                 data.lastcollectday = data.lastcollectday + 1
                 TriggerClientEvent("DailyReward:setNUI", _source, data)
                 MySQL.Async.execute('UPDATE `customdb`.`dailyreward` SET `lastcollectday`=@lastcollectday, `today`=@today, `resign_ticket`=@resign_ticket WHERE `identifier`=@identifier', {["@identifier"] = identifier, ["@lastcollectday"] = data.lastcollectday,["@today"] = data.today,["@resign_ticket"] = data.resign_ticket}, nil)    
-                giveItem(xPlayer,value)
+                giveItem(_source,value)
                 ::error::
             end)
-
+            
         end
     end
 end)
 
 
-function giveItem(xPlayer,item)
+function giveItem(source,item)
+    local xPlayer = ESX.GetPlayerFromId(source)
     if not item or not xPlayer then return end
 	if item.type=='cash' and item.value then
 		xPlayer.addMoney(item.value)
+        TriggerClientEvent("DailyReward:notify",source,("~s~你獲得~b~"..tostring(item.value).."~s~元"))
 	elseif item.type=='item' and item.name and item.value then
 		xPlayer.addInventoryItem(item.name,item.value)
+        TriggerClientEvent("DailyReward:notify",source,("~s~你獲得~b~"..tostring(item.value).."~s~個~b~"..item.name))
 	elseif item.type=='weapon' and item.name and item.value then
 		xPlayer.addWeapon(item.name, item.value)
+        TriggerClientEvent("DailyReward:notify",source,("~s~你獲得~b~"..item.name.."~s~和子彈~b~"..tostring(item.value).."~s~發"))
 	end
 end

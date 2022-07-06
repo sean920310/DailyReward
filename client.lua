@@ -91,7 +91,13 @@ AddEventHandler("DailyReward:setNUI",function(data)
         resign_ticket = data.resign_ticket,
     })
 end)
-
+RegisterNetEvent("DailyReward:notify")
+AddEventHandler("DailyReward:notify",function(str)
+    BeginTextCommandThefeedPost("STRING")
+    AddTextComponentSubstringPlayerName(str)
+    PlaySoundFrontend(-1, "COLLECTED", "HUD_AWARDS")
+    EndTextCommandThefeedPostTicker(true, true)
+end)
 
 function chat(str, color)
     TriggerEvent(
@@ -103,4 +109,3 @@ function chat(str, color)
         }
     )
 end
-
