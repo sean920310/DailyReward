@@ -38,31 +38,31 @@ window.addEventListener('message', function (event) {
         $.each(item.items, function (index, value) {
             if (index < 7) {
                 $("#row1").append('<td> <div class="day"> <div class="dayCount">Day ' + (index + 1) + '</div>' +
-                    '<img class="rewardImg" src="./asset/img/' + value.name + '.png" title="' + value.name + '">' +
+                    '<div class="rewardImg"><img src="./asset/img/' + value.name + '.png" title="' + value.name + '"></div>' +
                     '<div class="count">x'+value.value+'</div>'+
                     '<button class = "sign" id="d' + (index + 1) + '"></button> </div> </td>');
             }
             else if (index < 14) {
                 $("#row2").append('<td> <div class="day"> <div class="dayCount">Day ' + (index + 1) + '</div>' +
-                    '<img class="rewardImg" src="./asset/img/' + value.name + '.png" title="' + value.name + '">' +
+                    '<div class="rewardImg"><img src="./asset/img/' + value.name + '.png" title="' + value.name + '"></div>' +
                     '<div class="count">x'+value.value+'</div>'+
                     '<button class = "sign" id="d' + (index + 1) + '"></button> </div> </td>');
             }
             else if (index < 21) {
                 $("#row3").append('<td> <div class="day"> <div class="dayCount">Day ' + (index + 1) + '</div>' +
-                    '<img class="rewardImg" src="./asset/img/' + value.name + '.png" title="' + value.name + '">' +
+                    '<div class="rewardImg"><img src="./asset/img/' + value.name + '.png" title="' + value.name + '"></div>' +
                     '<div class="count">x'+value.value+'</div>'+
                     '<button class = "sign" id="d' + (index + 1) + '"></button> </div> </td>');
             }
             else if (index < 28) {
                 $("#row4").append('<td> <div class="day"> <div class="dayCount">Day ' + (index + 1) + '</div>' +
-                    '<img class="rewardImg" src="./asset/img/' + value.name + '.png" title="' + value.name + '">' +
+                    '<div class="rewardImg"><img src="./asset/img/' + value.name + '.png" title="' + value.name + '"></div>' +
                     '<div class="count">x'+value.value+'</div>'+
                     '<button class = "sign" id="d' + (index + 1) + '"></button> </div> </td>');
             }
             else {
                 $("#row5").append('<td> <div class="day"> <div class="dayCount">Day ' + (index + 1) + '</div>' +
-                    '<img class="rewardImg" src="./asset/img/' + value.name + '.png" title="' + value.name + '">' +
+                    '<div class="rewardImg"><img src="./asset/img/' + value.name + '.png" title="' + value.name + '"></div>' +
                     '<div class="count">x'+value.value+'</div>'+
                     '<button class = "sign" id="d' + (index + 1) + '"></button> </div> </td>');
             }

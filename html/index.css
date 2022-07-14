@@ -82,6 +82,13 @@ html body div#container div#allDays table {
     border-radius: 10px;
 }
 
+.rewardImg img
+{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
 .count {
     color: #FFFFFF;
 }
