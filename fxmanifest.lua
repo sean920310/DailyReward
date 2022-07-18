@@ -3,14 +3,14 @@ fx_version 'cerulean'
 games {"gta5"}
 
 client_scripts {
-    "client.lua",
     "config.lua",
+    "client.lua",
 }
 
 server_scripts {
-    "server.lua",
-    "config.lua",
     "@mysql-async/lib/MySQL.lua",
+    "config.lua",
+    "server.lua",
 }
 
 ui_page "html/index.html"
