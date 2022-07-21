@@ -10,7 +10,7 @@ ESX.RegisterServerCallback("DailyReward:openNUI", function(source,cb)
 
     if xPlayer ~= nil then
         local identifier = xPlayer.getIdentifier()
-		MySQL.Async.fetchAll('SELECT * FROM `customdb`.`dailyreward` WHERE `identifier`=@identifier;', {['@identifier'] = identifier}, function(collect)
+		MySQL.Async.fetchAll('SELECT * FROM `dailyreward` WHERE `identifier`=@identifier;', {['@identifier'] = identifier}, function(collect)
             if collect[1] then 
                 --讀取舊資料
                 data = collect[1]
@@ -19,7 +19,7 @@ ESX.RegisterServerCallback("DailyReward:openNUI", function(source,cb)
                     data.month = month
                     data.lastcollectday = 0
                     data.today = 0
-		            MySQL.Async.execute('UPDATE `customdb`.`dailyreward` SET `id`=@id, `month`=@month, `lastcollectday`=0 WHERE `identifier`=@identifier', {["@identifier"] = identifier, ["@id"] = source,["month"] = month}, nil)    
+		            MySQL.Async.execute('UPDATE `dailyreward` SET `month`=@month, `lastcollectday`=0 WHERE `identifier`=@identifier', {["@identifier"] = identifier, ["month"] = month}, nil)    
                 end
             else
                 --新增資料
@@ -27,10 +27,9 @@ ESX.RegisterServerCallback("DailyReward:openNUI", function(source,cb)
                 data.lastcollectday = 0
                 data.today = 0
                 data.resign_ticket = 0
-		        MySQL.Async.execute('INSERT INTO `customdb`.`dailyreward` (`id`,`identifier`,`month`, `lastcollectday`, `today`, `resign_ticket`) VALUES (@id,@identifier,@month,0,0,0);', {['id'] = source,['@identifier'] = identifier,['month'] = month}, nil)
+		        MySQL.Async.execute('INSERT INTO `dailyreward` (`id`,`identifier`,`month`, `lastcollectday`, `today`, `resign_ticket`) VALUES (@id,@identifier,@month,0,0,0);', {['id'] = source,['@identifier'] = identifier,['month'] = month}, nil)
             end
 
-            MySQL.Async.execute('UPDATE `customdb`.`dailyreward` SET `id`=@id WHERE `identifier`=@identifier', {["@identifier"] = identifier, ["@id"] = source}, nil)    
             cb(data)
         end)
     else
@@ -47,7 +46,7 @@ AddEventHandler("DailyReward:getReward",function(day)
             local _source = source
             local xPlayer = ESX.GetPlayerFromId(_source)
             local identifier = xPlayer.getIdentifier()
-		    MySQL.Async.fetchAll('SELECT * FROM `customdb`.`dailyreward` WHERE `identifier`=@identifier;', {['@identifier'] = identifier}, function(collect)
+		    MySQL.Async.fetchAll('SELECT * FROM `dailyreward` WHERE `identifier`=@identifier;', {['@identifier'] = identifier}, function(collect)
                 data = collect[1]
                 if data.today == d then
                     if data.resign_ticket > 0 then
@@ -60,7 +59,7 @@ AddEventHandler("DailyReward:getReward",function(day)
                 end
                 data.lastcollectday = data.lastcollectday + 1
                 TriggerClientEvent("DailyReward:setNUI", _source, data)
-                MySQL.Async.execute('UPDATE `customdb`.`dailyreward` SET `lastcollectday`=@lastcollectday, `today`=@today, `resign_ticket`=@resign_ticket WHERE `identifier`=@identifier', {["@identifier"] = identifier, ["@lastcollectday"] = data.lastcollectday,["@today"] = data.today,["@resign_ticket"] = data.resign_ticket}, nil)    
+                MySQL.Async.execute('UPDATE `dailyreward` SET `lastcollectday`=@lastcollectday, `today`=@today, `resign_ticket`=@resign_ticket WHERE `identifier`=@identifier', {["@identifier"] = identifier, ["@lastcollectday"] = data.lastcollectday,["@today"] = data.today,["@resign_ticket"] = data.resign_ticket}, nil)    
                 giveItem(_source,value)
                 ::error::
             end)
