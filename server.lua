@@ -27,7 +27,7 @@ ESX.RegisterServerCallback("DailyReward:openNUI", function(source,cb)
                 data.lastcollectday = 0
                 data.today = 0
                 data.resign_ticket = 0
-		        MySQL.Async.execute('INSERT INTO `dailyreward` (`identifier`,`month`, `lastcollectday`, `today`, `resign_ticket`) VALUES (@id,@identifier,@month,0,0,0);', {['@identifier'] = identifier,['month'] = month}, nil)
+		        MySQL.Async.execute('INSERT INTO `dailyreward` (`identifier`,`month`, `lastcollectday`, `today`, `resign_ticket`) VALUES (@identifier,@month,0,0,0);', {['@identifier'] = identifier,['month'] = month}, nil)
             end
 
             cb(data)
